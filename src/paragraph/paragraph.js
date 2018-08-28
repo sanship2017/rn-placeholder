@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import Line from '../line/line';
 
-const prepareLine = (i, marginBottom, textSize, color, width) => (
-  <View key={i} style={{ marginBottom }}>
+const prepareLine = (i, paddingVertical, textSize, color, width) => (
+  <View key={i} style={{ paddingVertical, borderBottomWidth: 1, borderBottomColor: '#bdc3c7'}}>
     <Line textSize={textSize} color={color} width={width} />
   </View>
 );
@@ -39,10 +39,10 @@ function Paragraph({
         </View>,
       );
     } else if (i === 0) {
-      lines.push(prepareLine(i, lineSpacing, textSize, color, firstLineWidth));
+      lines.push(prepareLine(i, lineSpacing/2, textSize, color, firstLineWidth));
     } else {
       lines.push(
-        <View key={i} style={{ marginBottom: lineSpacing }}>
+        <View key={i} style={{ paddingVertical: lineSpacing/2, borderBottomWidth: 1, borderBottomColor: '#bdc3c7'}}>
           <Line textSize={textSize} color={color} width={width} />
         </View>,
       );
