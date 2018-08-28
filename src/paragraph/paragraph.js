@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import Placeholder from '../placeholder';
 
-const prepareLine = (i, marginBottom, textSize, color, width) => (
+const prepareLine = (i, paddingVertical, textSize, color, width, styleLine) => (
   <Placeholder.Line
     textSize={textSize}
     color={color}
     width={width}
     key={i}
-    style={{ marginBottom }}
+    style={[{ paddingVertical }, styleLine]}
   />
 );
 
@@ -43,7 +43,7 @@ function Paragraph({
       }
 
       if (i === 0) {
-        return prepareLine(i, lineSpacing, textSize, color, firstLineWidth);
+        return prepareLine(i, lineSpacing/2, textSize, color, firstLineWidth, this.props.styleLine);
       }
 
       return (
@@ -52,7 +52,7 @@ function Paragraph({
           color={color}
           width={width}
           key={i}
-          style={{ marginBottom: lineSpacing }}
+          style={[{paddingVertical: lineSpacing/2}, this.props.styleLine]}
         />
       );
     });
@@ -79,6 +79,7 @@ Paragraph.defaultProps = {
   lastLineWidth: '100%',
   firstLineWidth: '100%',
   style: {},
+  styleLine: {}
 };
 
 export default Paragraph;
