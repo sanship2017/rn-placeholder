@@ -34,7 +34,7 @@ function Paragraph({
   for (let i = 0; i < lineNumber; i += 1) {
     if (i === lineRealNumber) {
       lines.push(
-        <View key={i}>
+        <View key={i} style={{ paddingVertical: lineSpacing/2 }}>
           <Line textSize={textSize} color={color} width={lastLineWidth} />
         </View>,
       );
